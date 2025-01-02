@@ -1,12 +1,1 @@
-@for (myJourneyPlanet of planetsStoreService.myJourneyPlanets(); track myJourneyPlanet) {
-  <div class="planet-info">
-    <div>Name: {{ myJourneyPlanet.name }}</div>
-    <div>Climate: {{ myJourneyPlanet.climate }}</div>
-    <div>Terrain: {{ myJourneyPlanet.terrain }}</div>
-    <div>Population: {{ myJourneyPlanet.population }}</div>
-    <div><strong>Visit with</strong>: {{ myJourneyPlanet.visitWith ?? '-' }}</div>
-    <button (click)="removeFromMyJourney(myJourneyPlanet)">- Remove form My journey</button>
-  </div>
-} @empty {
-  No planets added for my journey.
-}
+No planets added for my journey.

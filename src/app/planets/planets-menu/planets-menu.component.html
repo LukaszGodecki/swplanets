@@ -1,8 +1,1 @@
 <input [(ngModel)]="searchName" placeholder="Search by name..." class="planet-search" />
-@if (isLoadingPlanets()) {
-  Loading...
-} @else if (planets()) {
-  @for (planet of planets(); track planet) {
-    <button class="planet-button" (click)="selectPlanet(planet)">{{ planet.name }}</button>
-  }
-}

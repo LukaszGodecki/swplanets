@@ -1,28 +1,20 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IPlanet } from './iplanet';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PlanetsStoreService {
-  selectedPlanet = signal<IPlanet | null>(null);
-  myJourneyPlanets = signal<IPlanet[]>([]);
+  selectedPlanet = undefined;
+  myJourneyPlanets = undefined;
 
-  countPlanetsToVisit = computed(() => this.myJourneyPlanets().length ?? 0);
+  countPlanetsToVisit = undefined;
 
-  selectPlanet(planet: IPlanet): void {
-    this.selectedPlanet.set(planet);
-  }
+  selectPlanet(planet: IPlanet): void {}
 
-  clearSelectedPlanet(): void {
-    this.selectedPlanet.set(null);
-  }
+  clearSelectedPlanet(): void {}
 
-  addSelectedPlanetToMyJourney(selectedPerson?: string): void {
-    this.myJourneyPlanets.update((p) => [...p, { ...this.selectedPlanet()!, visitWith: selectedPerson }]);
-  }
+  addSelectedPlanetToMyJourney(selectedPerson?: string): void {}
 
-  removePlanetFormMyJourney(planet: IPlanet): void {
-    this.myJourneyPlanets.update((p) => [...p.filter((p) => p.name !== planet.name)]);
-  }
+  removePlanetFormMyJourney(planet: IPlanet): void {}
 }
