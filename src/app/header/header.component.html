@@ -3,6 +3,6 @@
 
   <div class="buttons">
     <button [routerLink]="['/planets']">Planets</button>
-    <button [routerLink]="['/my-journey']">My journey (0)</button>
+    <button [routerLink]="['/my-journey']">My journey ({{ planetsStoreService.countPlanetsToVisit() }})</button>
   </div>
 </header>
