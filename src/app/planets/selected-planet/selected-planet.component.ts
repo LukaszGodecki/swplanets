@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, linkedSignal } from '@angular/core';
 import { PlanetsStoreService } from '../../shared/planets-store.service';
 import { CommonModule } from '@angular/common';
 import { PlanetsApiService } from '../../shared/planets-api.service';
@@ -14,9 +14,12 @@ export class SelectedPlanetComponent {
   readonly planetsStoreService = inject(PlanetsStoreService);
   readonly planetsApiService = inject(PlanetsApiService);
 
-  selectedPerson = undefined;
+  selectedPerson = linkedSignal({
+    source: this.planetsStoreService.selectedPlanet,
+    computation: () => undefined,
+  });
 
   addSelectedPlanetToMyJourney(): void {
-    this.planetsStoreService.addSelectedPlanetToMyJourney();
+    this.planetsStoreService.addSelectedPlanetToMyJourney(this.selectedPerson());
   }
 }

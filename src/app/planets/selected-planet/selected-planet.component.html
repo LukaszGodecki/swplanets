@@ -8,4 +8,11 @@
     <div>Population: {{ planetsStoreService.selectedPlanet()?.population }}</div>
     <button (click)="addSelectedPlanetToMyJourney()">+ Add to My journey</button>
   </div>
+  <br />
+  <label>Visit with: </label>
+  <select [(ngModel)]="selectedPerson">
+    @for (person of planetsApiService.people(); track person) {
+      <option [value]="person">{{ person }}</option>
+    }
+  </select>
 }
