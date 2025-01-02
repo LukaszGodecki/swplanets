@@ -1,0 +1,8 @@
+<header>
+  <h2>Star Wars Planets</h2>
+
+  <div class="buttons">
+    <button [routerLink]="['/planets']">Planets</button>
+    <button [routerLink]="['/my-journey']">My journey ({{ planetsStoreService.countPlanetsToVisit() }})</button>
+  </div>
+</header>

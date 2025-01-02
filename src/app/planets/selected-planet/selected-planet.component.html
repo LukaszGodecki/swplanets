@@ -1,0 +1,18 @@
+@if (!planetsStoreService.selectedPlanet()) {
+  <div>Select a planet</div>
+} @else {
+  <div class="planet-info">
+    <div>Name: {{ planetsStoreService.selectedPlanet()?.name }}</div>
+    <div>Climate: {{ planetsStoreService.selectedPlanet()?.climate }}</div>
+    <div>Terrain: {{ planetsStoreService.selectedPlanet()?.terrain }}</div>
+    <div>Population: {{ planetsStoreService.selectedPlanet()?.population }}</div>
+    <button (click)="addSelectedPlanetToMyJourney()">+ Add to My journey</button>
+  </div>
+  <br />
+  <label>Visit with: </label>
+  <select [(ngModel)]="selectedPerson" placeholder="">
+    @for (person of planetsApiService.people(); track person) {
+      <option [value]="person">{{ person }}</option>
+    }
+  </select>
+}

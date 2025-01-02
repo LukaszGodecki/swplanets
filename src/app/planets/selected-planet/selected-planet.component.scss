@@ -1,0 +1,13 @@
+:host {
+  margin: auto;
+  text-align: center;
+
+  .planet-info {
+    min-width: 500px;
+    height: 150px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 1px solid;
+    background-color: lightgray;
+  }
+}

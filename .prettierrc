@@ -1,0 +1,15 @@
+{
+    "tabWidth": 2,
+    "printWidth": 120,
+    "quoteProps": "preserve",
+    "singleQuote": true,
+    "bracketSameLine": true,
+    "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular",
+        "printWidth": 240
+       }
+    }]
+  }
