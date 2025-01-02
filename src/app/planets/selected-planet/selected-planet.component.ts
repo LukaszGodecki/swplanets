@@ -17,6 +17,6 @@ export class SelectedPlanetComponent {
   selectedPerson = undefined;
 
   addSelectedPlanetToMyJourney(): void {
-    //this.planetsStoreService.addSelectedPlanetToMyJourney(this.selectedPerson());
+    this.planetsStoreService.addSelectedPlanetToMyJourney();
   }
 }

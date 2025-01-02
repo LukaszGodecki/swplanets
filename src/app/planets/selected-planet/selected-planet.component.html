@@ -1,1 +1,11 @@
-<div>Select a planet</div>
+@if (!planetsStoreService.selectedPlanet()) {
+  <div>Select a planet</div>
+} @else {
+  <div class="planet-info">
+    <div>Name: {{ planetsStoreService.selectedPlanet()?.name }}</div>
+    <div>Climate: {{ planetsStoreService.selectedPlanet()?.climate }}</div>
+    <div>Terrain: {{ planetsStoreService.selectedPlanet()?.terrain }}</div>
+    <div>Population: {{ planetsStoreService.selectedPlanet()?.population }}</div>
+    <button (click)="addSelectedPlanetToMyJourney()">+ Add to My journey</button>
+  </div>
+}
