@@ -1,5 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, inject } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { IPlanetResponse } from './iplanet-response';
+import { map } from 'rxjs';
+import { IPlanet } from './iplanet';
 
 @Injectable({
   providedIn: 'root',
@@ -7,11 +11,19 @@ import { Injectable, inject } from '@angular/core';
 export class PlanetsApiService {
   private _http = inject(HttpClient);
 
-  searchName = undefined;
+  searchName = signal<string>('');
 
-  private _getPlanets = undefined;
-  planets = undefined;
-  isLoadingPlanets = undefined;
+  private _getPlanets = rxResource({
+    request: () => ({
+      searchName: this.searchName(),
+    }),
+    loader: ({ request }) =>
+      this._http
+        .get<IPlanetResponse>(`https://swapi.py4e.com/api/planets/?search=${request.searchName}`)
+        .pipe(map((next) => next.results)),
+  });
+  planets = computed(() => this._getPlanets.value() ?? ([] as IPlanet[]));
+  isLoadingPlanets = computed(() => this._getPlanets.isLoading());
 
   people = undefined;
 }
