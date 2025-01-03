@@ -3,7 +3,7 @@ import { Component, effect, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PlanetsApiService } from '../../shared/planets-api.service';
 import { IPlanet } from '../../shared/iplanet';
-import { PlanetsStoreService } from '../../shared/planets-store.service';
+import { PlanetsStore } from '../../shared/planets.store';
 
 @Component({
   selector: 'app-planets-menu',
@@ -13,13 +13,13 @@ import { PlanetsStoreService } from '../../shared/planets-store.service';
 })
 export class PlanetsMenuComponent {
   private _planetsApiService = inject(PlanetsApiService);
-  private _planetsStoreService = inject(PlanetsStoreService);
+  private _planetsStore = inject(PlanetsStore);
 
   planets = this._planetsApiService.planets;
   searchName = this._planetsApiService.searchName;
   isLoadingPlanets = this._planetsApiService.isLoadingPlanets;
 
   selectPlanet(planet: IPlanet) {
-    this._planetsStoreService.selectPlanet(planet);
+    this._planetsStore.selectPlanet(planet);
   }
 }

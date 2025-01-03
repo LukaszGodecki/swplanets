@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { PlanetsStoreService } from '../shared/planets-store.service';
+import { PlanetsStore } from '../shared/planets.store';
 
 @Component({
   selector: 'app-header',
@@ -9,5 +9,5 @@ import { PlanetsStoreService } from '../shared/planets-store.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  readonly planetsStoreService = inject(PlanetsStoreService);
+  readonly planetsStore = inject(PlanetsStore);
 }

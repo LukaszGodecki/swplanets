@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { PlanetsStoreService } from '../shared/planets-store.service';
 import { CommonModule } from '@angular/common';
 import { IPlanet } from '../shared/iplanet';
+import { PlanetsStore } from '../shared/planets.store';
 
 @Component({
   selector: 'app-my-journey',
@@ -10,9 +10,9 @@ import { IPlanet } from '../shared/iplanet';
   styleUrl: './my-journey.component.scss',
 })
 export class MyJourneyComponent {
-  readonly planetsStoreService = inject(PlanetsStoreService);
+  readonly planetsStore = inject(PlanetsStore);
 
   removeFromMyJourney(planet: IPlanet): void {
-    this.planetsStoreService.removePlanetFormMyJourney(planet);
+    this.planetsStore.removePlanetFormMyJourney(planet);
   }
 }
